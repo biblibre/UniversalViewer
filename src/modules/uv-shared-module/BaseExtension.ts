@@ -596,6 +596,11 @@ export class BaseExtension implements IExtension {
 
     }
 
+    requirejsModulePath(path: string): string {
+        if(!path.startsWith('http') && !path.startsWith('/')) return path;
+        return path+'.js';
+    }
+
     getDependencies(cb: (deps: any) => void): any {
         const that = this;
 
@@ -610,7 +615,7 @@ export class BaseExtension implements IExtension {
 
         if (!scripts.length) {
 
-            requirejs([depsUri], function(getDeps: (formats: string[] | null | null) => IDependencies) {
+            requirejs([that.requirejsModulePath(depsUri)], function(getDeps: (formats: string[] | null | null) => IDependencies) {
 
                 // getDeps is a function that accepts a file format.
                 // it uses this to determine which dependencies are appropriate
@@ -634,7 +639,7 @@ export class BaseExtension implements IExtension {
                     for (let i = 0; i < deps.sync.length; i++) {
                         const dep: string = deps.sync[i];
                         if (!dep.startsWith('!')) {
-                            deps.sync[i] = baseUri + dep;
+                            deps.sync[i] = that.requirejsModulePath(baseUri + dep);
                         }
                     }
                 }
@@ -643,7 +648,7 @@ export class BaseExtension implements IExtension {
                     for (let i = 0; i < deps.async.length; i++) {
                         const dep: string = deps.async[i];
                         if (!dep.startsWith('!')) {
-                            deps.async[i] = baseUri + dep;
+                            deps.async[i] = that.requirejsModulePath(baseUri + dep);
                         }
                     }
                 }
