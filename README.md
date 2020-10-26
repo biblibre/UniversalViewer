@@ -15,11 +15,13 @@
 <!--
 [![Backers on Open Collective](https://opencollective.com/universalviewer/backers/badge.svg)](#backers)
 [![Sponsors on Open Collective](https://opencollective.com/universalviewer/sponsors/badge.svg)](#sponsors)
-[![Build Status](https://travis-ci.org/UniversalViewer/universalviewer.svg?branch=master)](https://travis-ci.org/UniversalViewer/universalviewer) 
+[![Build Status](https://travis-ci.org/UniversalViewer/universalviewer.svg?branch=master)](https://travis-ci.org/UniversalViewer/universalviewer)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FUniversalViewer%2Funiversalviewer.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FUniversalViewer%2Funiversalviewer?ref=badge_shield)
 &nbsp;&nbsp;
 <a href="https://universalviewerinvite.herokuapp.com"><img src="https://worldvectorlogo.com/logos/slack.svg" width="60" /></a>
 -->
+
+> This version includes a released dist zip file compatible with [Omeka S](https://omeka.org/s) that can be directly installed via composer and the module [Universal Viewer](https://github.com/Daniel-KM/Omeka-S-module-UniversalViewer).
 
 <p align="center">
     <a href="http://universalviewer.io/examples/">examples</a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -91,7 +93,7 @@ Read below how to engage with the UV [community](COMMUNITY_TEAM.md):
 
 ## Sponsors
 
-[Become a backer](https://opencollective.com/universalviewer#backer) and support us with a monthly donation and help us continue our activities. 
+[Become a backer](https://opencollective.com/universalviewer#backer) and support us with a monthly donation and help us continue our activities.
 
 <a href="https://opencollective.com/universalviewer/backer/0/website" target="_blank"><img src="https://opencollective.com/universalviewer/backer/0/avatar.svg"></a>
 <a href="https://opencollective.com/universalviewer/backer/1/website" target="_blank"><img src="https://opencollective.com/universalviewer/backer/1/avatar.svg"></a>
