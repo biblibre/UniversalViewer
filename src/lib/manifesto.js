@@ -965,6 +965,10 @@ var Manifesto;
                     }
                 }
             }
+            // Check if the id is already an image (IIIF v3 thumbnail).
+            if (id && (id.endsWith('.jpg') || id.endsWith('.png') || id.endsWith('.gif') || id.endsWith('.bmp'))) {
+                return id;
+            }
             var uri = [id, region, size, rotation, quality + '.jpg'].join('/');
             return uri;
         };
@@ -2665,7 +2669,7 @@ var Manifesto;
                             _a.sent();
                             if (!(resource.status === HTTPStatusCode.OK)) return [3 /*break*/, 3];
                             return [2 /*return*/, resource];
-                        case 3: 
+                        case 3:
                         // the stored token is no good for this resource
                         return [4 /*yield*/, Utils.doAuthChain(resource, openContentProviderInteraction, openTokenService, userInteractedWithContentProvider, getContentProviderInteraction, handleMovedTemporarily, showOutOfOptionsMessages)];
                         case 4:
@@ -2757,7 +2761,7 @@ var Manifesto;
                             // The difference is in the expected behaviour of
                             //
                             //    await userInteractedWithContentProvider(contentProviderInteraction);
-                            // 
+                            //
                             // For clickthrough the opened window should close immediately having established
                             // a session, whereas for login the user might spend some time entering credentials etc.
                             // Looking for clickthrough pattern
@@ -10301,7 +10305,7 @@ var IncomingMessage = exports.IncomingMessage = function (xhr, response, mode, f
 		self.url = response.url
 		self.statusCode = response.status
 		self.statusMessage = response.statusText
-		
+
 		response.headers.forEach(function (header, key){
 			self.headers[key.toLowerCase()] = header
 			self.rawHeaders.push(key, header)
@@ -10431,7 +10435,7 @@ IncomingMessage.prototype._onXHRProgress = function () {
 				self.push(new Buffer(response))
 				break
 			}
-			// Falls through in IE8	
+			// Falls through in IE8
 		case 'text':
 			try { // This will fail when readyState = 3 in IE9. Switch mode and wait for readyState = 4
 				response = xhr.responseText
