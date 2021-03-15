@@ -892,8 +892,8 @@ var Manifesto;
             var width = w;
             var size;
             // if an info.json has been loaded
-            if (this.externalResource && this.externalResource.data && this.externalResource.data['@id']) {
-                id = this.externalResource.data['@id'];
+            if (this.externalResource && this.externalResource.data && (this.externalResource.data.id || this.externalResource.data['@id'])) {
+                id = this.externalResource.data.id || this.externalResource.data['@id'];
                 if (!width) {
                     width = this.externalResource.data.width;
                 }
@@ -950,6 +950,20 @@ var Manifesto;
             // trim off trailing '/'
             if (id && id.endsWith('/')) {
                 id = id.substr(0, id.length - 1);
+            }
+            // Fix for iiif v3.
+            // TODO Use service for iiif v3 thumbnail.
+            if (!id && (this.context.indexOf('/3/context.json') > -1)) {
+                var content = this.getContent();
+                if (content && content.length) {
+                    var contentBody = content[0].getBody();
+                    if (contentBody && contentBody.length) {
+                        var contentBodyFirst = contentBody[0];
+                        if (contentBodyFirst.id) {
+                            return contentBodyFirst.id;
+                        }
+                    }
+                }
             }
             var uri = [id, region, size, rotation, quality + '.jpg'].join('/');
             return uri;
