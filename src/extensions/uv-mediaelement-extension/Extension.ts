@@ -201,6 +201,8 @@ export class Extension extends BaseExtension implements IMediaElementExtension {
                     }
                 }
             }
+            
+            return false;
 
         } else {
             const type: Manifesto.ResourceType | null = canvas.getType();
