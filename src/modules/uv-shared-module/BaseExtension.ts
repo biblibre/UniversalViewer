@@ -936,6 +936,7 @@ export class BaseExtension implements IExtension {
             if (root && !root.endsWith('/')) {
                 root += '/';
             }
+            return origin + root + 'uv.html';
         }
 
         // if root is a URL, use that instead of appUri.
