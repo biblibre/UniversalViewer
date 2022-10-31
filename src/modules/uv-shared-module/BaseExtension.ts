@@ -936,15 +936,12 @@ export class BaseExtension implements IExtension {
             if (root && !root.endsWith('/')) {
                 root += '/';
             }
+            return origin + root + 'uv.html';
         }
 
         // if root is a URL, use that instead of appUri.
         if (UVUtils.isValidUrl(root)) {
             return root + 'uv.html';
-        }
-
-        if (!Utils.Documents.isInIFrame()) {
-            return origin + root + 'uv.html';
         }
 
         return appUri + root + 'uv.html';
