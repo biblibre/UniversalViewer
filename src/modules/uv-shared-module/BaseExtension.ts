@@ -943,6 +943,10 @@ export class BaseExtension implements IExtension {
             return root + 'uv.html';
         }
 
+        if (!Utils.Documents.isInIFrame()) {
+            return origin + root + 'uv.html';
+        }
+
         return appUri + root + 'uv.html';
 
     }
